@@ -3,7 +3,7 @@ from wtforms import Form, StringField, SelectField, TextAreaField, PasswordField
 from wtforms.fields import EmailField, DateField
 from flask_wtf import FlaskForm
 
-class signupForm(Form):
+class carbonForm(Form):
     name = StringField('Name', [validators.Length(min=1, max=150), validators.DataRequired()])
     email = EmailField('Email', [validators.Email(), validators.DataRequired()])
     birthdate = DateField('Date of Birth', [validators.length(max=8), validators.Optional()])
