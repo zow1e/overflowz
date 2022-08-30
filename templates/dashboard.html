@@ -18,15 +18,6 @@
 
 
 <script>
-    
-    const labels = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'June'
-    ];
 
     const horizontalavg = {
         id: 'horizontalavg',
@@ -44,9 +35,18 @@
         ctx.strokeRect(left, y.getPixelForValue(8.56), width, 0);
         ctx.restore();
         }
-    }
+    };
+    
+    var labels = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'June'
+    ];
 
-    const config = {
+    var config = {
         type: 'line',
         data: {
             labels: labels,
