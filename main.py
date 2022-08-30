@@ -13,6 +13,10 @@ app.config['UPLOAD_FOLDER'] = 'static/images'
 def home():
    return render_template('home.html')
 
+@app.route('/tabs')
+def tabs():
+   return render_template('tabform.html')
+
 @app.route('/carbonform', methods=['GET', 'POST'])
 def create_user():
    createform = carbonForm(request.form)
