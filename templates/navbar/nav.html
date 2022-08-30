@@ -19,30 +19,15 @@
             <li class="nav-item">
               <a class="nav-link" href="/aboutUs">About Us</a>
             </li>
-            {% if 'admin_in in session %}
-            <li class="nav-item">
-              <a class="nav-link" href="/createEventForm">Create Event</a>
-            </li>
-            {% endif %}
           </ul>
   
           <form class="d-flex justify-content-center order-5">
   
   
-            {% if 'user_id' in session %}
-            <button type="button" class="btn btn-link  me-2" >
-              <a href="/cart/{{ session['user_id']  }}"><i class="bi bi-bag"></a></i>
-            </button>
-  
             
-            <a href="/accountDetails"><button type="button" class="btn btn-link me-3">
-              <i class="fa-regular fa-user"></i>
-            </button></a>
-            {% else %}
             <a href="/login"><button type="button" class="btn btn-primary me-3">
               Log In
             </button></a>
-            {% endif %}
   
           </form>
   
