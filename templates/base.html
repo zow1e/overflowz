@@ -30,50 +30,7 @@
 
     
 {% block footer %}
-    
-    <footer id="dk-footer" class="dk-footer">
-                  
-
-
-            <div class="copyright m-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <span>© 2022 Company, Inc</span>
-                        </div>
-                        <!-- End Col -->
-                        <div class="col-md-6">
-                            <div class="copyright-menu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Terms</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Privacy Policy</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Contact</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- End col -->
-                    </div>
-                    <!-- End Row -->
-                </div>
-                <!-- End Copyright Container -->
-            </div>
-            <!-- End Copyright -->
-            <!-- Back to top -->
-            <div style="width: 90%;">
-                <div id="back-to-top" class="back-to-top float-right">
-                    <button class="btn btn-dark" title="Back to Top" style="display: block;">
-                        <i class="fa fa-angle-up"></i>
-                    </button>
-                </div>
-            </div>
-            <!-- End Back to top -->
-    </footer>
+{% include 'navbar/footer.html' %}
 {% endblock %}
     
 {% block scripts %}
