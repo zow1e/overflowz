@@ -36,10 +36,12 @@ def tabs():
       electricity = carbonFootprint.electricity.data / 0.3228 * 0.4080
       gas = carbonFootprint.gas.data / 0.2471 * 0.4080
       water = carbonFootprint.water.data / 0.0129 * 0.137
-      utility = electricity + gas + water + 1
+      utility = electricity + gas + water
       
       if utility < 2:
          utility = 83
+      else:
+         utility/peoplecount+1
 
       print(utility)
 
@@ -59,13 +61,29 @@ def tabs():
       oceania = carbonFootprint.oceania.data * 1257.99
       americas = carbonFootprint.americas.data * 2411.385
 
-      tranportation = tranportation + sea+asia+europeafrica+oceania+americas
+      tranportation = (tranportation + sea+asia+europeafrica+oceania+americas)/peoplecount
 
-      return redirect(url_for('dash'))
+      # food
+      foods = carbonFootprint.food.data * peoplecount
+
+      # others
+      med = carbonFootprint.medical.data / 0.87
+      insurance = carbonFootprint.insurance.data / 211.532
+      education = carbonFootprint.education.data / 105.766
+      goodsandservices = carbonFootprint.goodsandservices.data / 61.019
+
+      others = (med + insurance + education + goodsandservices)/peoplecount
+
+      # total
+      total = utility + tranportation + foods + others
+
+      # set values
+      usercarbon = user.User(carbonFootprint.email.data, utility, tranportation, foods, others, total)
+
+      return redirect(url_for('dash'), id=carbonFootprint.email.data)
         
    else:
       return render_template('tabform.html', form = carbonFootprint)
-
 
 
 @app.route('/carbonform', methods=['GET', 'POST'])
@@ -75,8 +93,16 @@ def create_user():
    return render_template('carbonform.html', form = createform)
 
 @app.route('/dashboard')
-def dash():
+def dash(id):
+   users_dict = {}
+   db = shelve.open('storage.db', 'r')
+   users_dict = db['Users']
+   db.close()
+
+   details = users_dict.get(id)
+
    return render_template('dashboard.html')
+
 
 @app.route('/informativePage')
 def informative():

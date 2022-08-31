@@ -24,7 +24,7 @@ class carbonfootprint(Form):
     europeafrica = IntegerField('Europe/Africa: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     oceania = IntegerField('Oceania (Australia): ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     americas = IntegerField('North America/South America: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
-    food = SelectField('Which of the following best describes your diet?', [validators.DataRequired()], choices=[('', 'Select'), ('83.33', 'Vegan'), ('125','Vegetarian'), ('166.67','No Beef (Meat intake consists of chicken, fish and porkj'), ('208.33','Average'), ('250','Meat Lover')], default="Select")
+    food = SelectField('Which of the following best describes your diet?', [validators.DataRequired()], choices=[('', 'Select'), ('83.33', 'Vegan'), ('125','Vegetarian'), ('166.67','No Beef (Meat intake consists of chicken, fish and pork)'), ('208.33','Average'), ('250','Meat Lover')], default="Select")
     medical = IntegerField('Medical Fees: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     insurance = IntegerField('Insurance: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     education = IntegerField('Education: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
