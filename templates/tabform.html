@@ -1,22 +1,36 @@
 {% extends "base.html" %}
-{% block title %}Carbon Form{% endblock %}
-
-{% block content %}
+{% block title %}Calculate My Carbon Footprint{% endblock %}
+    {% block content %}
+{% from "includes/formhelper.html" import render_field %}
 
 <div class="container">
       <ul class="nav nav-tabs">
-         <li class="nav-item"><a href="#step1" class="nav-link active" data-bs-toggle="tab" role="tab">Step 1</a></li>
-         <li class="nav-item"><a href="#step2" class="nav-link" data-bs-toggle="tab" role="tab">Step 2</a></li>
-         <li class="nav-item"><a href="#step3" class="nav-link" data-bs-toggle="tab" role="tab">Step 3</a></li>
-         <li class="nav-item"><a href="#step4" class="nav-link" data-bs-toggle="tab" role="tab">Step 4</a></li>
+         <li class="nav-item"><a href="#step1" class="nav-link active" data-bs-toggle="tab" role="tab">Utilities</a></li>
+         <li class="nav-item"><a href="#step2" class="nav-link" data-bs-toggle="tab" role="tab">Transport</a></li>
+         <li class="nav-item"><a href="#step3" class="nav-link" data-bs-toggle="tab" role="tab">Food</a></li>
+         <li class="nav-item"><a href="#step4" class="nav-link" data-bs-toggle="tab" role="tab">Others</a></li>
       </ul>
       
-    <form class="tab-content pt-3" method="post" id="myForm">
+    <form class="tab-content pt-3 form-horizontal" method="POST" id="myForm" action="">
 
        <div class="tab-pane active" id="step1" role="tabpanel" >
-          <p>Here is the content for the first step...</p>
-          <input class="form-control" id="input1" name="input1" required="">
-          <button class="btn btn-default btn-ok" type="button">OK</button>
+            <div class="form_group">
+                {{render_field(form.numberofpeople, class="form-control")}}
+            </div>
+            <div class="form_group">
+                {{render_field(form.electricity, class="form-control")}}
+            </div>
+            <div class="form_group">
+                {{render_field(form.gas, class="form-control")}}
+            </div>
+            <div class="form_group">
+                {{render_field(form.water, class="form-control")}}
+            </div>
+            <div id="prof">
+                <div class="form_group">
+                    {{render_field(form.recycle, class="form-control", style="list-style-type:none")}}
+                </div>
+            </div>
        </div>
 
        <div class="tab-pane" id="step2" role="tabpanel" >

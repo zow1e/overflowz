@@ -8,3 +8,11 @@ class carbonForm(Form):
     password = PasswordField('Password', [validators.Length(min=8, max=20), validators.DataRequired()])
     comfirmpw = PasswordField('Confirm Password', [validators.Length(min=8, max=20), validators.DataRequired()])
 
+
+class carbonfootprint(Form):
+    numberofpeople = IntegerField('Number of people in your household: ', [validators.DataRequired()])
+    electricity = IntegerField('Electricity Consumption in $ (Optional)', [validators.Optional()])
+    gas = IntegerField('Gas Consumption in $ (Optional)', [validators.Optional()])
+    water = IntegerField('Water Consumption in $ (Optional)', [validators.Optional()])
+    recycle = RadioField('Does your household recycle waste?', [validators.DataRequired()],choices=[('', 'Select'), ('1', 'Yes'), ('0', 'No')], default='')
+

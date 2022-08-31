@@ -2,7 +2,7 @@ import os
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 from werkzeug.utils import secure_filename
 
-from form import carbonForm
+from form import carbonForm, carbonfootprint
 import shelve, user
 
 app = Flask(__name__)
@@ -16,7 +16,9 @@ def home():
 
 @app.route('/tabs')
 def tabs():
-   return render_template('tabform.html')
+   carbonFootprint = carbonfootprint(request.form)
+
+   return render_template('tabform.html', form = carbonFootprint)
 
 @app.route('/carbonform', methods=['GET', 'POST'])
 def create_user():
