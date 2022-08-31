@@ -18,9 +18,9 @@ class User:
         self.__email = email
 
     def get_date(self):
-        return self.__dates
+        return str(self.__dates)
     def set_date(self, dates):
-        self.__dates.append(dates)
+        self.__dates.append(str(dates))
     
     def get_utilities(self):
         return self.__utilities

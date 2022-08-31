@@ -69,7 +69,7 @@
         <h1>Carbon Emissions in the world</h1>
 
         {#  horizontal bar chart #}
-        <div style="width: 600px">
+        <div style="width: 100%">
             <canvas id="myChart"></canvas>
         </div>
         <script>
@@ -80,7 +80,7 @@
               labels: ["Singapore", "Malaysia", "Thailand", "China", "Japan", "United States", "South Korea"],
               datasets: [{
                 label: 'Day',
-                data: [8.56, 8.68, 3.93, 7.38, 15.52, 11.85, 9.70, 11.85],
+                data: [8.56, 8.68, 3.93, 7.38, 9.70, 15.52, 11.85],
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(255, 159, 64, 0.2)',
@@ -130,7 +130,7 @@
             }
 
             #chartdiv {
-              width: 80%;
+              width: 100%;
               height: 400px;
             }
         </style>
@@ -149,11 +149,8 @@
               "category": "Transport",
               "percent": 13.8
             }, {
-              "category": "Buildings",
-              "percent": 0.8
-            }, {
-              "category": "Household, Waste and Water",
-              "percent": 1
+              "category": "Household, Waste and Water and others",
+              "percent": 1.8
             }];
 
             // Add and configure Series
@@ -297,6 +294,11 @@
           </div>
         </div>
 
+    <br>
+    <br>
+    <h1>Every effort counts</h1>
+    <img src="https://www.nccs.gov.sg/images/info-1-01.jpg?sfvrsn=1e966f02_0" width="100%">
+    
   {% block scripts %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
