@@ -25,8 +25,7 @@ def tabs():
       except:
          print("Error in retrieving Users from storage.db.")
 
-      #   key = carbonFootprint.email.data
-      #   session['useremail'] = key
+      session['useremail'] = carbonFootprint.email.data
 
       #   if key == 'None': 
       #       flash('Email does not have records', 'danger')
