@@ -28,17 +28,14 @@ def tabs():
       session['useremail'] = carbonFootprint.email.data
 
       #   if key == 'None': 
-      #       flash('Email does not have records', 'danger')
+      #   flash('Email does not have records', 'danger')
 
       peoplecount = carbonFootprint.numberofpeople.data
 
       # utilities
-      if carbonFootprint.electricity.data != 'None':
-         electricity = carbonFootprint.electricity.data / 0.3228 * 0.4080
-      if carbonFootprint.gas.data > 0:
-         gas = carbonFootprint.gas.data / 0.2471 * 0.4080
-      if carbonFootprint.water.data > 0:
-         water = carbonFootprint.water.data / 0.0129 * 0.137
+      electricity = carbonFootprint.electricity.data / 0.3228 * 0.4080
+      gas = carbonFootprint.gas.data / 0.2471 * 0.4080
+      water = carbonFootprint.water.data / 0.0129 * 0.137
       utility = electricity + gas + water
       
       if utility < 2:
@@ -89,6 +86,8 @@ def tabs():
       users_dict[usercarbon.get_email()] = usercarbon
       db['Users'] = users_dict
       db.close()
+
+      print(total)
 
       return redirect(url_for('dash', id=carbonFootprint.email.data))
         
