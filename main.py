@@ -94,7 +94,7 @@ def tabs():
       usercarbon.set_others(others)
       usercarbon.set_total(totalc)
 
-      date = carbonFootprint.date.data.strftime("%d:%m:%Y")
+      date = carbonFootprint.date.data.strftime("%d/%m/%Y")
       # date = carbonFootprint.date.data
       usercarbon.set_date(date)
 
