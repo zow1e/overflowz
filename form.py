@@ -10,9 +10,21 @@ class carbonForm(Form):
 
 
 class carbonfootprint(Form):
-    numberofpeople = IntegerField('Number of people in your household: ', [validators.DataRequired()])
-    electricity = IntegerField('Electricity Consumption in $ (Optional)', [validators.Optional()])
-    gas = IntegerField('Gas Consumption in $ (Optional)', [validators.Optional()])
-    water = IntegerField('Water Consumption in $ (Optional)', [validators.Optional()])
-    recycle = RadioField('Does your household recycle waste?', [validators.DataRequired()],choices=[('', 'Select'), ('1', 'Yes'), ('0', 'No')], default='')
+    numberofpeople = IntegerField('Number of people in your household: ', [validators.DataRequired(), validators.NumberRange(min=1, max=10)])
+    electricity = IntegerField('Electricity Consumption in $ (Optional)', [validators.Optional(), validators.NumberRange(min=1)])
+    gas = IntegerField('Gas Consumption in $ (Optional)', [validators.Optional(), validators.NumberRange(min=1)])
+    water = IntegerField('Water Consumption in $ (Optional)', [validators.Optional(), validators.NumberRange(min=1)])
+    recycle = RadioField('Does your household recycle waste?', [validators.DataRequired()],choices=[('1', 'Yes'), ('0', 'No')])
+    car = IntegerField('Car (in km)', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    motorcycle = IntegerField('Motorcycle (in km)', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    mrtlrt = IntegerField('MRT/LRT (in km)', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    bus = IntegerField('Bus (in km)', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    southeastasia = IntegerField('Southeast Asia: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    asiapacific = IntegerField('Asia Pacific', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    europeafrica = IntegerField('Europe/Africa: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    oceania = IntegerField('Oceania (Australia): ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    americas = IntegerField('North America/South America: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+
+
+
 
