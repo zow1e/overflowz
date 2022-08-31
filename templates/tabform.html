@@ -4,37 +4,39 @@
 {% block content %}
 
 <div class="container">
-    <div class="navbar">
-       <div class="navbar-inner">
-             <ul class="nav nav-tabs">
-                <li class="nav-link active"><a href="#step1" data-bs-toggle="tab">Step 1</a></li>
-                <li class="nav-link"><a href="#step2" data-bs-toggle="tab">Step 2</a></li>
-                <li class="nav-link"><a href="#step3" data-bs-toggle="tab">Step 3</a></li>
-                <li class="nav-link"><a href="#step4" data-bs-toggle="tab">Step 4</a></li>
-             </ul>
-       </div>
-    </div>
-    <form class="tab-content" method="post" id="myForm">
-       <div class="tab-pane active" id="step1">
+      <ul class="nav nav-tabs">
+         <li class="nav-item"><a href="#step1" class="nav-link active" data-bs-toggle="tab" role="tab">Step 1</a></li>
+         <li class="nav-item"><a href="#step2" class="nav-link" data-bs-toggle="tab" role="tab">Step 2</a></li>
+         <li class="nav-item"><a href="#step3" class="nav-link" data-bs-toggle="tab" role="tab">Step 3</a></li>
+         <li class="nav-item"><a href="#step4" class="nav-link" data-bs-toggle="tab" role="tab">Step 4</a></li>
+      </ul>
+      
+    <form class="tab-content pt-3" method="post" id="myForm">
+
+       <div class="tab-pane active" id="step1" role="tabpanel" >
           <p>Here is the content for the first step...</p>
           <input class="form-control" id="input1" name="input1" required="">
           <button class="btn btn-default btn-ok" type="button">OK</button>
        </div>
-       <div class="tab-pane" id="step2">
+
+       <div class="tab-pane" id="step2" role="tabpanel" >
           <p>Here is the content for step 2...</p>
           <input class="form-control" id="input2" name="input2" required="">
           <button class="btn btn-default btn-ok" type="button">OK</button>
        </div>
-       <div class="tab-pane" id="step3">
+
+       <div class="tab-pane" id="step3" role="tabpanel" >
           <p>Here is the content for step 3...</p>
           <input class="form-control" id="input3" name="input3" required="">
           <input class="form-control" id="input4" name="input4" required="">
           <button class="btn btn-default btn-ok" type="button">OK</button>
        </div>
-       <div class="tab-pane" id="step4">
+
+       <div class="tab-pane" id="step4" role="tabpanel" >
           <p>This is the last step. You're done.</p>
           <button class="btn btn-default btn-submit" type="submit">Submit</button>
        </div>
+       
     </form>
  </div>
 
