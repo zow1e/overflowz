@@ -32,4 +32,3 @@ class carbonfootprint(Form):
     email = StringField('Email:', [validators.DataRequired()])
     date = DateField('Date of record:', [validators.length(max=8), validators.Optional()])
 
-
