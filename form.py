@@ -29,5 +29,6 @@ class carbonfootprint(Form):
     insurance = IntegerField('Insurance: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     education = IntegerField('Education: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     goodsandservices = IntegerField('Goods and Services: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    email = StringField('Email:', [validators.DataRequired()])
 
 
