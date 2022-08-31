@@ -123,10 +123,15 @@ def dash(id):
 
    details = users_dict.get(id)
    carbonv = details.get_total()
+   uty = details.get_utilities()
+   tr = details.get_transport()
+   fo = details.get_food()
+   oth = details.get_others()
+
    dates = details.get_date()
    counting = len(carbonv)
 
-   return render_template('dashboard.html', tot=carbonv, counting = counting, dates = dates)
+   return render_template('dashboard.html', tot=carbonv, uty=uty, tr=tr, fo=fo, oth=oth, counting=counting, dates=dates)
 
 
 @app.route('/informativePage')

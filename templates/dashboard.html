@@ -40,7 +40,7 @@
     // datelist.append(i)
     // }
     // var datedate = {{ dates }};
-    var labels = [{% for item in dates %} {{ item }} ,{% endfor %}];
+    var labels = [{% for i in range(1, counting+1) %} {{ i }} ,{% endfor %}];
     // var labels = []
     // for (let i = 0; i < datedate.length; i++) {
     // labels.append(i);
@@ -51,35 +51,70 @@
         type: 'bar',
         data: {
             labels: labels,
-            datasets: [{
-                label: 'Carbon footprint',
-                data: [{% for item in tot %} {{item}} ,{% endfor %}],
-                backgroundColor: ['rgba(75, 192, 192, 0.2)',],
+            datasets: [
+            //     {
+            //     label: 'Carbon footprint',
+            //     data: [{% for item in tot %} {{item}} ,{% endfor %}],
+            //     backgroundColor: ['rgba(75, 192, 192, 0.2)',],
+            //     borderColor: ['rgba(75, 192, 192, 1)',],
+            //     borderWidth: 1
+            // }
+            {
+                label: 'Utilities',
+                data: [{% for item in uty %} {{item}} ,{% endfor %}],
+                backgroundColor: ['rgba(255, 159, 64, 0.8)',],
+                borderColor: ['rgba(255, 159, 64, 1)',],
+                borderWidth: 1
+            },
+            {
+                label: 'Transport',
+                data: [{% for item in tr %} {{item}} ,{% endfor %}],
+                backgroundColor: ['rgba(75, 192, 192, 0.8)',],
                 borderColor: ['rgba(75, 192, 192, 1)',],
                 borderWidth: 1
-            }]
+            },
+            {
+                label: 'Food',
+                data: [{% for item in fo %} {{item}} ,{% endfor %}],
+                backgroundColor: ['rgba(54, 162, 235, 0.8)',],
+                borderColor: ['rgba(54, 162, 235, 1)',],
+                borderWidth: 1
+            },
+            {
+                label: 'Others',
+                data: [{% for item in oth %} {{item}} ,{% endfor %}],
+                backgroundColor: ['rgba(153, 102, 255, 0.8)',],
+                borderColor: ['rgba(153, 102, 255, 1)',],
+                borderWidth: 1
+            },
+        ]
         },
         options: {
             scales: {
-                x: [ {
-            display: true,
-            type: 'time',
-            time: {
-              parser: 'DD/MM/YYYY',
-              tooltipFormat: 'll HH:mm',
-              unit: 'day',
-              displayFormats: {
-                'day': 'DD/MM/YYYY'
-              }
-            }
-          }
-        ],
+                x:{
+                stacked: true,
+            //     type: 'time',
+            //     time: {
+            //     unit :'day',
+            //     parser: 'dd:mm:yyyy'
+            // }
+          },
                 y: {
+                    stacked: true,
                     beginAtZero: true
                 }
             }
         },
-        plugins: [horizontalavg]
+        // plugins: [horizontalavg]
+        plugins: {
+            tooltip: {
+                callbacks: {
+                afterBody: function(context) {
+                    return '%';
+                }
+            }
+            }
+        }
     };
 
     const ctx = document.getElementById('myChart');
