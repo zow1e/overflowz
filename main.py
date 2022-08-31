@@ -75,7 +75,7 @@ def tabs():
       goodsandservices = carbonFootprint.goodsandservices.data / 61.019
 
       others = (med + insurance + education + goodsandservices)/peoplecount
-      otehrs = float(others)
+      others = float(others)
 
       # total
       total = utility + tranportation + foods + others
