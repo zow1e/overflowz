@@ -15,8 +15,8 @@
       <ul class="nav nav-tabs">
          <li class="nav-item"><a href="#step1" class="nav-link active" data-bs-toggle="tab" role="tab">Utilities</a></li>
          <li class="nav-item"><a href="#step2" class="nav-link" data-bs-toggle="tab" role="tab">Transport</a></li>
-         <li class="nav-item"><a href="#step3" class="nav-link" data-bs-toggle="tab" role="tab">Food</a></li>
-         <li class="nav-item"><a href="#step4" class="nav-link" data-bs-toggle="tab" role="tab">Others</a></li>
+         <li class="nav-item"><a href="#step3" class="nav-link" data-bs-toggle="tab" role="tab">Others</a></li>
+         <li class="nav-item"><a href="#step4" class="nav-link" data-bs-toggle="tab" role="tab">Email</a></li>
       </ul>
       
     <form class="tab-content pt-3 form-horizontal" method="POST" id="myForm" action="">
@@ -74,15 +74,54 @@
        </div>
 
        <div class="tab-pane" id="step3" role="tabpanel" >
-          <p>Here is the content for step 3...</p>
-          <input class="form-control" id="input3" name="input3" required="">
-          <input class="form-control" id="input4" name="input4" required="">
-          <button class="btn btn-default btn-ok" type="button">OK</button>
+          <div class="form_group">
+                    {{render_field(form.food, class="form-control")}}
+          </div>
+          <br>
+          <p>How much do you spend on the following per month:</p>
+           <div class="form_group">
+                    {{render_field(form.medical, class="form-control")}}
+          </div>
+           <div class="form_group">
+                    {{render_field(form.insurance, class="form-control")}}
+          </div>
+           <div class="form_group">
+                    {{render_field(form.education, class="form-control")}}
+          </div>
+           <div class="form_group">
+                    {{render_field(form.goodsandservices, class="form-control")}}
+          </div>
+           <p>Examples of goods and services include:
+           <ul>
+           <li>
+               Clothing and footwear
+           </li>
+           <li>
+               Recreational, cultural and sporting activities
+           </li>
+           <li>
+               Furnishings, household equipment, household maintenance
+           </li>
+           <li>
+                Telephone, mobile/cell phone call costs
+           </li>
+           <li>
+                Paper based products
+           </li>
+           <li>
+                Other purchased goods and services
+           </li>
+       </ul></p>
+
        </div>
 
        <div class="tab-pane" id="step4" role="tabpanel" >
-          <p>This is the last step. You're done.</p>
-          <button class="btn btn-default btn-submit" type="submit">Submit</button>
+          <p>This is the last step. You're almost done.</p>
+           <div class="form_group">
+                    {{render_field(form.email, class="form-control")}}
+          </div>
+           <br>
+          <button class="btn btn-default btn-submit btn-success" type="submit">Submit</button>
        </div>
        
     </form>
