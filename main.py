@@ -30,5 +30,9 @@ def create_user():
 def dash():
    return render_template('dashboard.html')
 
+@app.route('/informativePage')
+def informative():
+   return render_template('informativePage.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
