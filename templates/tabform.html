@@ -26,17 +26,43 @@
             <div class="form_group">
                 {{render_field(form.water, class="form-control")}}
             </div>
-            <div id="prof">
-                <div class="form_group">
-                    {{render_field(form.recycle, class="form-control", style="list-style-type:none")}}
-                </div>
-            </div>
+            <div class="form_group">
+                 {{render_field(form.recycle, class="form-control", style="list-style-type:none")}}
+             </div>
        </div>
 
        <div class="tab-pane" id="step2" role="tabpanel" >
-          <p>Here is the content for step 2...</p>
-          <input class="form-control" id="input2" name="input2" required="">
-          <button class="btn btn-default btn-ok" type="button">OK</button>
+          <p>What is the average distance you commute on the following modes of transport?</p>
+              <div class="form_group">
+                    {{render_field(form.car, class="form-control")}}
+                </div>
+                <div class="form_group">
+                    {{render_field(form.motorcycle, class="form-control")}}
+                </div>
+                <div class="form_group">
+                    {{render_field(form.mrtlrt, class="form-control")}}
+                </div>
+                <div class="form_group">
+                    {{render_field(form.bus, class="form-control")}}
+                </div>
+           <br>
+           <p>What is the number of times you have travelled to each of these regions within the past year:</p>
+                <div class="form_group">
+                    {{render_field(form.southeastasia, class="form-control")}}
+                </div>
+                <div class="form_group">
+                    {{render_field(form.asiapacific, class="form-control")}}
+                </div>
+                <div class="form_group">
+                    {{render_field(form.europeafrica, class="form-control")}}
+                </div>
+                <div class="form_group">
+                    {{render_field(form.oceania, class="form-control")}}
+                </div>
+                <div class="form_group">
+                    {{render_field(form.americas, class="form-control")}}
+                </div>
+
        </div>
 
        <div class="tab-pane" id="step3" role="tabpanel" >
