@@ -13,9 +13,7 @@
     </div>
 </div>
 </div>
-
-
-
+<p>{{ dates }}</p>
 
 <script>
 
@@ -36,23 +34,26 @@
         ctx.restore();
         }
     };
-    
-    var labels = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'June'
-    ];
+    // datelist = []
+    // for (var i = 0; i < arrayLength; i++) {
+    // console.log(myStringArray[i]);
+    // datelist.append(i)
+    // }
+    // var datedate = {{ dates }};
+    var labels = [{% for item in dates %} {{ item }} ,{% endfor %}];
+    // var labels = []
+    // for (let i = 0; i < datedate.length; i++) {
+    // labels.append(i);
+    // }
+
 
     var config = {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: labels,
             datasets: [{
                 label: 'Carbon footprint',
-                data: [12, 5, 4, 4, 3, 3],
+                data: [{% for item in tot %} {{item}} ,{% endfor %}],
                 backgroundColor: ['rgba(75, 192, 192, 0.2)',],
                 borderColor: ['rgba(75, 192, 192, 1)',],
                 borderWidth: 1
@@ -60,6 +61,19 @@
         },
         options: {
             scales: {
+                x: [ {
+            display: true,
+            type: 'time',
+            time: {
+              parser: 'DD/MM/YYYY',
+              tooltipFormat: 'll HH:mm',
+              unit: 'day',
+              displayFormats: {
+                'day': 'DD/MM/YYYY'
+              }
+            }
+          }
+        ],
                 y: {
                     beginAtZero: true
                 }

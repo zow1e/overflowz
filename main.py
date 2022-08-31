@@ -78,16 +78,29 @@ def tabs():
       others = float(others)
 
       # total
-      total = utility + tranportation + foods + others
+      totalc = utility + tranportation + foods + others
 
       # set values
-      usercarbon = user.User(carbonFootprint.email.data, utility, tranportation, foods, others, total)
+      if carbonFootprint.email.data in users_dict.keys() :
+         usercarbon = users_dict.get(carbonFootprint.email.data)
+      
+      else:
+          usercarbon = user.User(carbonFootprint.email.data)
+
+      
+      usercarbon.set_utilities(utility)
+      usercarbon.set_transport(tranportation)
+      usercarbon.set_food(foods)
+      usercarbon.set_others(others)
+      usercarbon.set_total(totalc)
+
+      date = carbonFootprint.date.data.strftime("%d:%m:%Y")
+      # date = carbonFootprint.date.data
+      usercarbon.set_date(date)
 
       users_dict[usercarbon.get_email()] = usercarbon
       db['Users'] = users_dict
       db.close()
-
-      print(total)
 
       return redirect(url_for('dash', id=carbonFootprint.email.data))
         
@@ -108,9 +121,12 @@ def dash(id):
    users_dict = db['Users']
    db.close()
 
-   details = users_dict.get(str(id))
+   details = users_dict.get(id)
+   carbonv = details.get_total()
+   dates = details.get_date()
+   counting = len(carbonv)
 
-   return render_template('dashboard.html')
+   return render_template('dashboard.html', tot=carbonv, counting = counting, dates = dates)
 
 
 @app.route('/informativePage')
