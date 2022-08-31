@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title%}Dashboard{% endblock %}
+
+{% block content%}
+
+
+<div class="container-md-4">
+<div class="card">
+    <div class="card-body" >
+        <p class="card-title">Recorded carbon emissions</p>
+        <hr>
+        <canvas id="myChart"  style="max-height:250px ;"></canvas>
+    </div>
+</div>
+</div>
+
+
+
+
+<script>
+
+    const horizontalavg = {
+        id: 'horizontalavg',
+        beforeline(chart, args, options) {
+            const { ctx, chartArea: { top, right, bottom, left, width, height },
+        scales: { x, y }} = chart;
+
+        ctx.save();
+
+        // horizontal line drawing
+        
+        ctx.strokeStyle = 'grey';
+        ctx.setLineDash([10, 5]);
+
+        ctx.strokeRect(left, y.getPixelForValue(8.56), width, 0);
+        ctx.restore();
+        }
+    };
+    
+    var labels = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'June'
+    ];
+
+    var config = {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Carbon footprint',
+                data: [12, 5, 4, 4, 3, 3],
+                backgroundColor: ['rgba(75, 192, 192, 0.2)',],
+                borderColor: ['rgba(75, 192, 192, 1)',],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        },
+        plugins: [horizontalavg]
+    };
+
+    const ctx = document.getElementById('myChart');
+    const myChart = new Chart(ctx, config);
+    </script>
+{% endblock %}

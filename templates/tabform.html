@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Carbon Form{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="navbar">
+       <div class="navbar-inner">
+             <ul class="nav nav-tabs">
+                <li class="nav-link active"><a href="#step1" data-bs-toggle="tab">Step 1</a></li>
+                <li class="nav-link"><a href="#step2" data-bs-toggle="tab">Step 2</a></li>
+                <li class="nav-link"><a href="#step3" data-bs-toggle="tab">Step 3</a></li>
+                <li class="nav-link"><a href="#step4" data-bs-toggle="tab">Step 4</a></li>
+             </ul>
+       </div>
+    </div>
+    <form class="tab-content" method="post" id="myForm">
+       <div class="tab-pane active" id="step1">
+          <p>Here is the content for the first step...</p>
+          <input class="form-control" id="input1" name="input1" required="">
+          <button class="btn btn-default btn-ok" type="button">OK</button>
+       </div>
+       <div class="tab-pane" id="step2">
+          <p>Here is the content for step 2...</p>
+          <input class="form-control" id="input2" name="input2" required="">
+          <button class="btn btn-default btn-ok" type="button">OK</button>
+       </div>
+       <div class="tab-pane" id="step3">
+          <p>Here is the content for step 3...</p>
+          <input class="form-control" id="input3" name="input3" required="">
+          <input class="form-control" id="input4" name="input4" required="">
+          <button class="btn btn-default btn-ok" type="button">OK</button>
+       </div>
+       <div class="tab-pane" id="step4">
+          <p>This is the last step. You're done.</p>
+          <button class="btn btn-default btn-submit" type="submit">Submit</button>
+       </div>
+    </form>
+ </div>
+
+
+
+ <script>
+    // disable all tabs
+$('[data-toggle=tab]').click(function () {
+  return true;}
+).addClass("text-muted");
+
+var validated = function(tab){
+  tab.unbind('click').removeClass('text-muted').addClass('green');
+}
+
+//validate inputs on click of button
+$('.btn-ok').click(function(){
+    
+    var allValid = true;
+    // get each input in this tab pane and validate
+    $(this).parents('.tab-pane').find('.form-control').each(function(i,e){
+         
+        // some condition(s) to validate each input
+        var len = $(e).val().length;
+        if (len>0){
+            // validation passed
+            allValid = true;
+        } else {
+            // validation failed
+            allValid = false;
+        }
+       
+    });
+  
+    if (allValid) {
+        var tabIndex = $(this).parents('.tab-pane').index();
+        validated($('[data-toggle]').eq(tabIndex+1));
+    }
+    
+});
+
+
+// form submit
+$( "#myForm" ).submit(function( event ) {
+  console.log("Handler for .submit() called..");
+  console.log( $( this ).serialize() );
+  event.preventDefault();
+});
+
+
+ </script>
+
+{% endblock %}
