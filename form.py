@@ -11,9 +11,9 @@ class carbonForm(Form):
 
 class carbonfootprint(Form):
     numberofpeople = IntegerField('Number of people in your household: ', [validators.DataRequired(), validators.NumberRange(min=1, max=10)])
-    electricity = IntegerField('Electricity Consumption in $ (Optional)', [validators.Optional(), validators.NumberRange(min=1)], default='0')
-    gas = IntegerField('Gas Consumption in $ (Optional)', [validators.Optional(), validators.NumberRange(min=1)], default='0')
-    water = IntegerField('Water Consumption in $ (Optional)', [validators.Optional(), validators.NumberRange(min=1)], default='0')
+    electricity = IntegerField('Electricity Consumption in $', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    gas = IntegerField('Gas Consumption in $', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
+    water = IntegerField('Water Consumption in $', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     recycle = RadioField('Does your household recycle waste?', [validators.DataRequired()],choices=[('1', 'Yes'), ('0', 'No')])
     car = IntegerField('Car (in km)', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     motorcycle = IntegerField('Motorcycle (in km)', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')

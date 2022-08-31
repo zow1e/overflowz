@@ -33,12 +33,9 @@ def tabs():
       peoplecount = carbonFootprint.numberofpeople.data
 
       # utilities
-      if carbonFootprint.electricity.data != 'None':
-         electricity = carbonFootprint.electricity.data / 0.3228 * 0.4080
-      if carbonFootprint.gas.data > 0:
-         gas = carbonFootprint.gas.data / 0.2471 * 0.4080
-      if carbonFootprint.water.data > 0:
-         water = carbonFootprint.water.data / 0.0129 * 0.137
+      electricity = carbonFootprint.electricity.data / 0.3228 * 0.4080
+      gas = carbonFootprint.gas.data / 0.2471 * 0.4080
+      water = carbonFootprint.water.data / 0.0129 * 0.137
       utility = electricity + gas + water
       
       if utility < 2:
@@ -78,7 +75,7 @@ def tabs():
       goodsandservices = carbonFootprint.goodsandservices.data / 61.019
 
       others = (med + insurance + education + goodsandservices)/peoplecount
-      otehrs = float(others)
+      others = float(others)
 
       # total
       total = utility + tranportation + foods + others
