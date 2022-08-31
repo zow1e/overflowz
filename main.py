@@ -19,7 +19,7 @@ def tabs():
    carbonFootprint = carbonfootprint(request.form)
    if request.method == 'POST':
       users_dict = {}
-      db = shelve.open('storage.db', 'r')
+      db = shelve.open('storage.db', 'c')
       try:
          users_dict = db['Users']
       except:
@@ -32,10 +32,14 @@ def tabs():
       #       flash('Email does not have records', 'danger')
 
       peoplecount = carbonFootprint.numberofpeople.data
+
       # utilities
-      electricity = carbonFootprint.electricity.data / 0.3228 * 0.4080
-      gas = carbonFootprint.gas.data / 0.2471 * 0.4080
-      water = carbonFootprint.water.data / 0.0129 * 0.137
+      if carbonFootprint.electricity.data != 'None':
+         electricity = carbonFootprint.electricity.data / 0.3228 * 0.4080
+      if carbonFootprint.gas.data > 0:
+         gas = carbonFootprint.gas.data / 0.2471 * 0.4080
+      if carbonFootprint.water.data > 0:
+         water = carbonFootprint.water.data / 0.0129 * 0.137
       utility = electricity + gas + water
       
       if utility < 2:
@@ -43,7 +47,7 @@ def tabs():
       else:
          utility/peoplecount+1
 
-      print(utility)
+      utility = float(utility)
 
       # transport
       car = carbonFootprint.car.data * 0.118
@@ -52,7 +56,7 @@ def tabs():
       bus = carbonFootprint.bus.data * 0.073
 
       tranportation = car + motorcycle + mrtlrt + bus
-      print(tranportation)
+      
 
       ## regions
       sea = carbonFootprint.southeastasia.data * 256.5
@@ -62,9 +66,11 @@ def tabs():
       americas = carbonFootprint.americas.data * 2411.385
 
       tranportation = (tranportation + sea+asia+europeafrica+oceania+americas)/peoplecount
+      tranportation = float(tranportation)
 
       # food
-      foods = carbonFootprint.food.data * peoplecount
+      foods = carbonFootprint.food.data
+      foods = float(foods)
 
       # others
       med = carbonFootprint.medical.data / 0.87
@@ -73,6 +79,7 @@ def tabs():
       goodsandservices = carbonFootprint.goodsandservices.data / 61.019
 
       others = (med + insurance + education + goodsandservices)/peoplecount
+      otehrs = float(others)
 
       # total
       total = utility + tranportation + foods + others
@@ -80,7 +87,11 @@ def tabs():
       # set values
       usercarbon = user.User(carbonFootprint.email.data, utility, tranportation, foods, others, total)
 
-      return redirect(url_for('dash'), id=carbonFootprint.email.data)
+      users_dict[usercarbon.get_email()] = usercarbon
+      db['Users'] = users_dict
+      db.close()
+
+      return redirect(url_for('dash', id=carbonFootprint.email.data))
         
    else:
       return render_template('tabform.html', form = carbonFootprint)
@@ -92,14 +103,14 @@ def create_user():
 
    return render_template('carbonform.html', form = createform)
 
-@app.route('/dashboard')
+@app.route('/dashboard/<id>/')
 def dash(id):
    users_dict = {}
    db = shelve.open('storage.db', 'r')
    users_dict = db['Users']
    db.close()
 
-   details = users_dict.get(id)
+   details = users_dict.get(str(id))
 
    return render_template('dashboard.html')
 
