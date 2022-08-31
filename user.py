@@ -1,13 +1,14 @@
 
 class User:
 
-    def __init__(self, email, utilities, transport, food, others):
+    def __init__(self, email, utilities, transport, food, others, total):
 
         self.__email = email
         self.__utilities = utilities
         self.__transport = transport
         self.__food = food
         self.__others = others
+        self.__total = total
         
 
     def get_email(self):
@@ -34,5 +35,10 @@ class User:
         return self.__others
     def set_others(self, others):
         self.__others = others
+
+    def get_total(self):
+        return self.__total
+    def set_total(self, total):
+        self.__total = total
 
     
