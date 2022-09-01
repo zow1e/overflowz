@@ -61,7 +61,7 @@ def tabs():
       bus = carbonFootprint.bus.data * 0.073
 
       tranportation = car + motorcycle + mrtlrt + bus
-      
+      recycle = carbonFootprint.recycle.data
 
       ## regions
       sea = carbonFootprint.southeastasia.data * 256.5
@@ -105,7 +105,7 @@ def tabs():
       print('new', usercarbon.form)
       usercarbon.set_formid()
       print(usercarbon.form)
-      usercarbon.set_stats([carbonFootprint.electricity.data,carbonFootprint.gas.data,carbonFootprint.water.data,carbonFootprint.car.data,carbonFootprint.motorcycle.data,carbonFootprint.southeastasia.data,carbonFootprint.asiapacific.data,carbonFootprint.europeafrica.data,carbonFootprint.oceania.data,carbonFootprint.americas.data,others])
+      usercarbon.set_stats([carbonFootprint.electricity.data,carbonFootprint.gas.data,carbonFootprint.water.data,carbonFootprint.car.data,carbonFootprint.motorcycle.data,carbonFootprint.southeastasia.data,carbonFootprint.asiapacific.data,carbonFootprint.europeafrica.data,carbonFootprint.oceania.data,carbonFootprint.americas.data,others,recycle])
 
 
       users_dict[usercarbon.get_email()] = usercarbon
