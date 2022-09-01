@@ -344,13 +344,20 @@
 
     .card{
         border-radius:10px;
-
+        box-shadow: 2px 2px 7px rgb(207 207 207);
+        transition: 0.5s;
     }
     .card img{
         -webkit-user-drag: none;
         object-fit:cover;
         height:300px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         
+    }
+    .card:hover{
+        box-shadow: 1px 1px 10px rgb(131, 131, 131);
+        transform: translateY(-7px);
     }
 
     
