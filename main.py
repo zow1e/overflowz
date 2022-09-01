@@ -105,6 +105,7 @@ def tabs():
       print('new', usercarbon.form)
       usercarbon.set_formid()
       print(usercarbon.form)
+      usercarbon.set_stats([carbonFootprint.electricity.data,carbonFootprint.gas.data,carbonFootprint.water.data,carbonFootprint.car.data,carbonFootprint.motorcycle.data,carbonFootprint.southeastasia.data,carbonFootprint.asiapacific.data,carbonFootprint.europeafrica.data,carbonFootprint.oceania.data,carbonFootprint.americas.data,others])
 
       date = carbonFootprint.date.data.strftime("%d/%m/%Y")
       # date = carbonFootprint.date.data
@@ -141,11 +142,12 @@ def dash(id):
    oth = details.get_others()
    forms = details.get_formid()
    print('form', forms)
+   stats = details.get_stats()
 
    dates = details.get_date()
    counting = len(forms)
 
-   return render_template('dashboard.html', forms=forms, tot=carbonv, uty=uty, tr=tr, fo=fo, oth=oth, counting=counting, dates=dates)
+   return render_template('dashboard.html', forms=forms, tot=carbonv, uty=uty, tr=tr, fo=fo, oth=oth, counting=counting, dates=dates,stats = stats)
 
 
 @app.route('/deleteform/<key>/<formid>/')

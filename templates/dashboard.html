@@ -30,7 +30,7 @@
           <td> {{ c }} </td>
           
           
-          <td>{{ tot[c-1] }}</td>
+          <td>{{ '{0:.2f}'.format(tot[c-1]) }}</td>
           
           <td><a href="/deleteform/{{ session['useremail'] }}/{{ c }}" class="btn btn-danger">Delete</a></td>
 <!--           
@@ -152,4 +152,112 @@
     const ctx = document.getElementById('myChart');
     const myChart = new Chart(ctx, config);
     </script>
+<br>
+<br>
+<h2 style = "text-align: center;">Tips for you to help combat climate change</h2>
+<br>
+<div style = "display:flex; gap:20px; justify-content:center;flex-wrap:wrap">
+
+{% set counter = 0 %}
+
+{% if stats[-1][0]>=15%}
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Some quick example text on elec</p>
+        </div>
+      </div>
+      {% set counter=counter+1%}
+
+{%endif%}
+{% if stats[-1][1]>=15%}
+
+<div class="card" style="width: 18rem;">
+    <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Some quick example text on gas</p>
+    </div>
+
+</div>
+{% set counter=counter+1%}
+
+{%endif%}
+
+
+{%if stats[-1][2]>=50%}
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Some quick example text on water</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
+
+
+
+{%if (stats[-1][3]+stats[-1][4])>=50%}
+<div class="card" style="width: 18rem;">
+    <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Taking private transport pls</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
+
+
+
+{%if (stats[-1][5]+stats[-1][6]+stats[-1][7]+stats[-1][7]+stats[-1][8]+stats[-1][9])>=2%}
+<div class="card" style="width: 18rem;">
+    <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Some quick example text on water</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
+
+
+
+{%if stats[-1][10]>=50%}
+<div class="card" style="width: 18rem;">
+    <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Others</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
+
+
+
+
+{% if counter==0%}
+
+<div style = "padding: 100px 200px; border:0.5px solid #000000;border-radius: 25px;">
+    <p style = "font-size: 15px;"><em>No Tips! Keep Up the Good Work!</em></p>
+</div>
+
+
+{%endif%}
+
+
+</div>
+<style>
+    img{
+        -webkit-user-drag: none;
+    }
+
+</style>
+<!-- 
+{% for i in stats[0] %}
+
+<p>{{i}}</p>
+
+{% endfor %} -->
+
+<br>
+<br>
 {% endblock %}

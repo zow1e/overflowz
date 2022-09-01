@@ -14,6 +14,7 @@ class User:
         self.__others = []
         self.__total = []
         self.__formlist = []
+        self.__stats = []
         
         
     def get_email(self):
@@ -70,3 +71,9 @@ class User:
 
     def delete_formid(self, no):
         self.__formlist.pop(no)
+
+            
+    def get_stats(self):
+        return self.__stats
+    def set_stats(self,stats):
+        self.__stats.append(stats)
