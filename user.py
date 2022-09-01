@@ -22,7 +22,7 @@ class User:
         self.__email = email
 
     def get_date(self):
-        return str(self.__dates)
+        return self.__dates
     def set_date(self, dates):
         self.__dates.append(str(dates))
     
