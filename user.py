@@ -7,7 +7,6 @@ class User:
 
 
         self.__email = email
-        self.__dates = []
         self.__utilities = []
         self.__transport = []
         self.__food = []
@@ -22,10 +21,6 @@ class User:
     def set_email(self, email):
         self.__email = email
 
-    def get_date(self):
-        return self.__dates
-    def set_date(self, dates):
-        self.__dates.append(str(dates))
     
     def get_utilities(self):
         return self.__utilities

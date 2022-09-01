@@ -40,7 +40,7 @@
        </div>
 
        <div class="tab-pane" id="step2" role="tabpanel" >
-          <p>What is the average distance you commute on the following modes of transport?</p>
+          <p>What is the average distance you commute on the following modes of transport monthly?</p>
               <div class="form_group">
                     {{render_field(form.car, class="form-control")}}
                 </div>
@@ -54,7 +54,7 @@
                     {{render_field(form.bus, class="form-control")}}
                 </div>
            <br>
-           <p>What is the number of times you have travelled to each of these regions within the past year:</p>
+           <p>What is the number of times you have traveled to each of these regions in the past month:</p>
                 <div class="form_group">
                     {{render_field(form.southeastasia, class="form-control")}}
                 </div>
@@ -121,10 +121,6 @@
                     {{render_field(form.email, class="form-control")}}
           </div>
            <br>
-           <div class="form_group">
-                {{render_field(form.date, class="form-control")}}
-            </div>
-            <br>
             <button class="btn btn-default btn-submit btn-success" type="submit">Submit</button>
        </div>
        

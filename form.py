@@ -30,5 +30,4 @@ class carbonfootprint(Form):
     education = IntegerField('Education: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     goodsandservices = IntegerField('Goods and Services: ', [validators.DataRequired(), validators.NumberRange(min=0)], default='0')
     email = StringField('Email:', [validators.DataRequired()])
-    date = DateField('Date of record:', [validators.length(max=8), validators.Optional()])
 

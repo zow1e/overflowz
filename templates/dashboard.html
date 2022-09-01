@@ -13,7 +13,6 @@
     </div>
 </div>
 </div>
-<p>{{ dates }}</p>
 
 <table class="table table-striped">
     <thead>
@@ -33,10 +32,7 @@
           <td>{{ '{0:.2f}'.format(tot[c-1]) }}</td>
           
           <td><a href="/deleteform/{{ session['useremail'] }}/{{ c }}" class="btn btn-danger">Delete</a></td>
-<!--           
-            <form action="" method="POST">
-              <input type="submit" value="Delete" class="btn btn-danger">
-            </form> -->
+
           </td>
         </tr>
         {% endfor %}
@@ -259,5 +255,6 @@
 {% endfor %} -->
 
 <br>
+<h5>Want to know more about Singapore's carbon emissions?<a href="\#sgcarbon"> Click Here!</a></h5>
 <br>
 {% endblock %}
