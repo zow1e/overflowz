@@ -15,6 +15,36 @@
 </div>
 <p>{{ dates }}</p>
 
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th>Form ID</th>
+          <th>Total Carbon Emissions</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+        {% for c in range(1, counting+1) %}
+        <tr>
+          <td> {{ c }} </td>
+          
+          
+          <td>{{ tot[c-1] }}</td>
+          
+          <td><a href="/deleteform/{{ session['useremail'] }}/{{ c }}" class="btn btn-danger">Delete</a></td>
+<!--           
+            <form action="" method="POST">
+              <input type="submit" value="Delete" class="btn btn-danger">
+            </form> -->
+          </td>
+        </tr>
+        {% endfor %}
+      
+      </tbody>
+  
+</table>
+
 <script>
 
     const horizontalavg = {
@@ -103,18 +133,21 @@
                     stacked: true,
                     beginAtZero: true
                 }
-            }
+            },
+            
+            
         },
         // plugins: [horizontalavg]
-        plugins: {
-            tooltip: {
-                callbacks: {
-                afterBody: function(context) {
-                    return '%';
-                }
-            }
-            }
-        }
+        // plugins: {
+        //     tooltip: {
+        //         callbacks: {
+        //         afterBody: function(context) {
+        //             return '%';
+        //         }
+        //     }
+        //     }
+        // }
+        // plugins: [ChartDateLabel],
     };
 
     const ctx = document.getElementById('myChart');

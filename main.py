@@ -5,9 +5,20 @@ from werkzeug.utils import secure_filename
 from form import carbonForm, carbonfootprint
 import shelve, user
 
+import flask
+import flask_login
+import datetime
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'I have a dream'
 app.config['UPLOAD_FOLDER'] = 'static/images'
+
+@app.before_request
+def before_request():
+    flask.session.permanent = True
+    app.permanent_session_lifetime = datetime.timedelta(minutes=30)
+    flask.session.modified = True
+    flask.g.user = flask_login.current_user
 
 
 @app.route('/')
@@ -93,6 +104,9 @@ def tabs():
       usercarbon.set_food(foods)
       usercarbon.set_others(others)
       usercarbon.set_total(totalc)
+      print('new', usercarbon.form)
+      usercarbon.set_formid()
+      print(usercarbon.form)
 
       date = carbonFootprint.date.data.strftime("%d/%m/%Y")
       # date = carbonFootprint.date.data
@@ -127,16 +141,51 @@ def dash(id):
    tr = details.get_transport()
    fo = details.get_food()
    oth = details.get_others()
+   forms = details.get_formid()
+   print('form', forms)
 
    dates = details.get_date()
-   counting = len(carbonv)
+   counting = len(forms)
 
-   return render_template('dashboard.html', tot=carbonv, uty=uty, tr=tr, fo=fo, oth=oth, counting=counting, dates=dates)
+   return render_template('dashboard.html', forms=forms, tot=carbonv, uty=uty, tr=tr, fo=fo, oth=oth, counting=counting, dates=dates)
 
 
 @app.route('/informativePage')
 def informative():
    return render_template('informativePage.html')
+
+@app.route('/deleteform/<key>/<formid>/')
+def deleteacc(key, formid):
+   
+   formid = int(formid) -1
+   users_dict = {}
+   db = shelve.open('storage.db', 'w')
+   users_dict = db['Users']
+   print('pop', formid)
+
+   user = users_dict.get(key)
+   user.delete_utilities(formid)
+   user.delete__transport(formid)
+   user.delete__food(formid)
+   user.delete__others(formid)
+   user.delete__total(formid)
+   user.delete_formid(formid)
+
+   db['Users'] = users_dict
+   db.close()
+
+   session.pop('useremail', None)
+
+   form = user.get_formid()
+   fcount = len(form)
+
+   
+
+   if fcount == 0:
+      return redirect(url_for('home'))
+   else:
+      return redirect(url_for('dash', id=key))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
