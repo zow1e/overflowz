@@ -149,10 +149,6 @@ def dash(id):
    return render_template('dashboard.html', forms=forms, tot=carbonv, uty=uty, tr=tr, fo=fo, oth=oth, counting=counting, dates=dates)
 
 
-@app.route('/informativePage')
-def informative():
-   return render_template('informativePage.html')
-
 @app.route('/deleteform/<key>/<formid>/')
 def deleteacc(key, formid):
    
