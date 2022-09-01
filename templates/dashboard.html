@@ -165,43 +165,99 @@
     <div class="card" style="width: 18rem;">
         <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-          <p class="card-text">Some quick example text on elec</p>
+            <h5 class="card-title">Use more natural light.</h5>
+          <p class="card-text">
+            In the daytime instead of switching on lights and fans, we can keep our windows open to get natural light and air.
+            </p>
         </div>
       </div>
       {% set counter=counter+1%}
 
 {%endif%}
-{% if stats[-1][1]>=15%}
 
-<div class="card" style="width: 18rem;">
-    <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <p class="card-text">Some quick example text on gas</p>
-    </div>
+{% if stats[-1][0]>=15%}
 
-</div>
-{% set counter=counter+1%}
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.nea.gov.sg/images/default-source/default-album/example-of-energy-label-for-vrf-air-conditioner.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Energy-Efficient Appliances</h5>
+
+          <p class="card-text">
+            When shopping for appliances or electronics, look for ones with Energy Labels that are certified to be more energy efficient. The more tick ratings, the more energy you save.
+            
+            </p>
+        </div>
+      </div>
+      {% set counter=counter+1%}
+
+{%endif%}
+{% if stats[-1][0]>=15%}
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.kindpng.com/picc/m/287-2875168_png-plug-icon-free-transparent-png.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Switch off plugs when not in use.</h5>
+          <p class="card-text">
+            Power sockets that are left turned on can amount to an additional S$25 per year. Especially, keeping the water heater on can lead to an additional S$110 per year on your bill
+            
+        </div>
+      </div>
+      {% set counter=counter+1%}
 
 {%endif%}
 
 
 {%if stats[-1][2]>=50%}
 <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="https://icons-for-free.com/iconfiles/png/512/laundry+machine+wash+washing+icon-1320183749358577657.png" class="card-img-top" alt="...">
     <div class="card-body">
-      <p class="card-text">Some quick example text on water</p>
+
+        <h5 class="card-title">Wash your clothes with room temperature water.</h5>
+      <p class="card-text"> Singapore's tap water is warm enough for wash to be effective!</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
+
+{%if stats[-1][2]>=50%}
+<div class="card" style="width: 18rem;">
+    <img src="https://cdn-icons-png.flaticon.com/512/1235/1235892.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Keep to a 5 min bath</h5>
+      <p class="card-text">
+        Every minute of shower time equates to 2 gallons of water, If you shower daily, cutting back your shower time by just a minute could save sixty gallons of water per month.
+        </p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
+{%if (stats[-1][3]+stats[-1][4])>=50%}
+<div class="card" style="width: 18rem;">
+    <img src="https://cdn2.iconfinder.com/data/icons/maki/100/fuel-512.png" class="card-img-top" alt="...">
+    <div class="card-body"><h5 class="card-title">Use Clean Fuel</h5>
+      <p class="card-text">Electric, smart cars, cars that run on vegetable oil, etc…are great examples of using renewable energy. Supporting companies that provide these products will help the rest of the mainstream manufacturing companies convert over.
+    </p>
     </div>
 </div>
 {% set counter=counter+1%}
 {%endif%}
 
 
+{%if (stats[-1][3]+stats[-1][4])>=50%}
+<div class="card" style="width: 18rem;">
+    <img src="https://media.istockphoto.com/vectors/transportation-icons-related-car-for-private-transportation-vectors-vector-id1278030289?b=1&k=20&m=1278030289&s=170667a&w=0&h=8tsdP7NHzbwYzSrJ9DlP6Jb2PCDQyFNmRq1e0nei0F8=" class="card-img-top" alt="...">
+    <div class="card-body"><h5 class="card-title">Choose Public Transport</h5>
+      <p class="card-text">Greater utilization of public transport services over personal vehicle use is one of the best ways on how to reduce emissions and helps to save the environment.</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
 
 {%if (stats[-1][3]+stats[-1][4])>=50%}
 <div class="card" style="width: 18rem;">
-    <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <p class="card-text">Taking private transport pls</p>
+    <img src="http://d1y1lc6vjc8q07.cloudfront.net/wp-content/uploads/2014/10/0020.png" class="card-img-top" alt="...">
+    <div class="card-body"><h5 class="card-title">Drive Less or Carpool</h5>
+      <p class="card-text">By driving less, you are not only saving fuel but also helping in reducing global warming. Also, look out for other possibilities, e.g., carpooling. If you have colleagues who live in the same area, then you can combine trips.</p>
     </div>
 </div>
 {% set counter=counter+1%}
@@ -211,44 +267,94 @@
 
 {%if (stats[-1][5]+stats[-1][6]+stats[-1][7]+stats[-1][7]+stats[-1][8]+stats[-1][9])>=2%}
 <div class="card" style="width: 18rem;">
-    <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
+    <img src="https://preview.pixlr.com/images/800wm/100/1/1001528934.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <p class="card-text">Some quick example text on water</p>
+        <h5 class="card-title">Support locals</h5>
+      <p class="card-text">Support local stores even when shopping online. This saves on shipping fees and your items will be delivered much faster!</p>
     </div>
 </div>
 {% set counter=counter+1%}
 {%endif%}
 
-
-
-{%if stats[-1][10]>=50%}
+{%if stats[-1][10]>=200%}
 <div class="card" style="width: 18rem;">
-    <img src="https://www.thoughtco.com/thmb/NjWNoDg8rEZ4KVQMUq3xwp3G6tU=/735x0/lightbulblit-57a5bf6b5f9b58974aee831e.jpg" class="card-img-top" alt="...">
+    <img src="https://thumbs.dreamstime.com/b/armchair-icon-outline-style-vector-eps-illustration-armchair-icon-outline-style-furniture-collection-vector-eps-142757961.jpg" class="card-img-top" alt="...">
+
     <div class="card-body">
-      <p class="card-text">Others</p>
+        <h5 class="card-title">Reuse your furniture</h5>
+      <p class="card-text">Consider using recycled materials like pallets or repurposing your old furniture instead of buying new ones.</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
+{%if stats[-1][10]>=200%}
+<div class="card" style="width: 18rem;">
+    <img src="https://cdn-icons-png.flaticon.com/512/12/12653.png" class="card-img-top" alt="...">
+
+    <div class="card-body">
+        <h5 class="card-title">Stay away from fast fashion</h5>
+      <p class="card-text">Stay away from “fast fashion” and invest in quality products that last. It takes about 3,781 liters of water just to make a pair of jeans!</p>
     </div>
 </div>
 {% set counter=counter+1%}
 {%endif%}
 
+{%if stats[-1][11]=='0'%}
+<div class="card" style="width: 18rem;">
+    <img src="https://hughesent.com/wp-content/uploads/2020/09/iStock_000007650780Small.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Avoid Products With Lot of Packaging</h5>
+      <p class="card-text">Just don’t buy products with a lot of packaging. When you buy such products, you will end up throwing the waste material in the garbage, which then will help in filling landfill sites and pollute the environment. Also, discourage others from buying such products.</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
+
+{%if stats[-1][11]=='0'%}
+
+<div class="card" style="width: 18rem;">
+    <img src="https://herschel.sg/content/dam/herschel/products/11037/11037-00001-OS_01.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Bring your own shopping bag</h5>
+      <p class="card-text">Plastic bags are destructive to the environment. They take hundreds of years to break down, contaminate soil and waterways, and cause widespread marine animal deaths. Cities and states around the country have enacted plastic-bag bans or charges on single-use bags to combat the problem. Switch to reusable bags and use them consistently to contribute.</p>
+    </div>
+</div>
+{% set counter=counter+1%}
+{%endif%}
 
 
 
 {% if counter==0%}
 
-<div style = "padding: 100px 200px; border:0.5px solid #000000;border-radius: 25px;">
-    <p style = "font-size: 15px;"><em>No Tips! Keep Up the Good Work!</em></p>
-</div>
 
+<br>
+<div class = 'cards-101'>
+    <hr style = "background-color: #aeaeae">
+    <div style = "padding: 100px 200px; ">
+        <p style = "font-size: 15px;"><em>No Tips! Keep Up the Good Work!</em></p>
+    </div>
+    <hr style = "background-color: #aeaeae">
+</div>
 
 {%endif%}
 
 
 </div>
 <style>
-    img{
-        -webkit-user-drag: none;
+
+    .card{
+        border-radius:10px;
+
     }
+    .card img{
+        -webkit-user-drag: none;
+        object-fit:cover;
+        height:300px;
+        
+    }
+
+    
+
 
 </style>
 <!-- 
@@ -261,3 +367,4 @@
 <br>
 <br>
 {% endblock %}
+
