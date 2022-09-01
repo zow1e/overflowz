@@ -6,7 +6,6 @@ from form import carbonForm, carbonfootprint
 import shelve, user
 
 import flask
-import flask_login
 import datetime
 
 app = Flask(__name__)
@@ -18,7 +17,7 @@ def before_request():
     flask.session.permanent = True
     app.permanent_session_lifetime = datetime.timedelta(minutes=30)
     flask.session.modified = True
-    flask.g.user = flask_login.current_user
+   #  flask.g.user = flask_login.current_user
 
 
 @app.route('/')
